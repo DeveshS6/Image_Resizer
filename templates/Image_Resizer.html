@@ -2,6 +2,10 @@
 <html>
  
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>
         Image Resizer
     </title>
@@ -10,11 +14,33 @@
         h1 {
             color:  blue;
         }
-         
+        .container {
+      width: 80%;
+      margin: 2rem auto;
+    }
+
+    input {
+      display: block;
+      margin-bottom: 2rem;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    input[type="submit"] {
+      background-color: dodgerblue;
+      color: #fff;
+      padding: .8rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
         body {
             text-align: center;
         }
-
+    
+        .error {
+      color: #ff0000;
+    }
 
     </style>
 </head>
@@ -27,37 +53,20 @@
     <p>Upload an Image</p>
 
     <div class="container">
-        <h1>Upload your files here</h1>
-        <p>Upload only png, jpg, jpeg, gif images only.</p>
+        <p>Upload only png, jpg, jpeg images only.</p>
         <form action="/" method="post" enctype="multipart/form-data">
           <input type="file" name="file" onchange="return fileValidation()"  />
           <input type="submit" value="Upload">
         </form>
+        {% with messages = get_flashed_messages() %}
+        {% for msg in messages %}
+          <p class="error">{{ msg }}</p>
+        {% endfor %}
+      {% endwith %}
       </div>
 
   
  
-        <div class="card-img p-3">
-            <div class="input-group mb-3" style="max-width:450px;">
-                <div class="input-group-prepend">
-                    <label class="input-group-text">Mode: </label>
-                </div>
-                <select class="custom-select" id="mode"><option>Width</option><option>Ratio</option><option>Weight</option></select>
-                <div>
-                    <select class="custom-select rounded-0" id="mode_0"><option value="800">800px</option><option value="600" selected>600px</option><option value="400">400px</option></select>
-                    <select class="custom-select rounded-0 d-none" id="mode_1"><option value="1">Original</option><option value="0.5" selected>1/2</option><option value="0.25">1/4</option><option value="0.125">1/8</option></select>
-                    <select class="custom-select rounded-0 d-none" id="mode_2"><option value="100">100KB</option><option value="200" selected>200KB</option><option value="500">500KB</option></select>
-                </div>
-                <div class="input-group-append">
-                    <select class="custom-select rounded-0" id="format"><option>JPG-10</option><option selected>JPG-8</option><option>JPG-6</option><option>PNG (No Compression)</option></select>
-                </div>
-            </div>
-            <textarea class="custom-select w-100 d-none" id="img_data"></textarea>
-            <div class="row mx-auto my-3 text-center" style="overflow-x:auto;">
-                <img id="showImg" src="" />
-            </div>
-        </div>
-
 
 
     <div id="imagePreview"></div>
