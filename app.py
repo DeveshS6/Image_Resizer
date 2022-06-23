@@ -4,6 +4,8 @@ from werkzeug.utils import secure_filename
 from utils import *
 
 app = Flask(__name__)
+app.config['UPLOADS_FOLDER'] = UPLOADS_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
 app.config['SECRET_KEY'] = 'ImageResize'
 
 @app.route('/', methods=["GET", "POST"])
@@ -15,16 +17,15 @@ def index():
         flash('No file part in request')
         return redirect(request.url)
 
-    file = request.files.get('name')
+    file = request.files.get('file')
 
     if file.filename == '':
         flash('No file uploaded')
         return redirect(request.url)
 
-    file_size(file.filepath)
-
     if file_valid(file.filename):
         filename = secure_filename(file.filename)
+        print('\nfile name up: ' + filename)
         file.save(os.path.join(app.config['UPLOADS_FOLDER'], filename))
     else:
         flash('File type not supported')

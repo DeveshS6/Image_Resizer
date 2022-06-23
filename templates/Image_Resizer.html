@@ -55,14 +55,16 @@
     <div class="container">
         <p>Upload only png, jpg, jpeg images only.</p>
         <form action="/" method="post" enctype="multipart/form-data">
-          <input type="file" name="file"   />
-          <input type="submit" value="Upload">
+          <input type="file" name="file"  id="file" accept=".jpg, .png, .jpeg" >
+          <input type="button" value="Validate" onclick="fileValidation()">
+          <input type="submit" value="Upload" >
         </form>
+        
         {% with messages = get_flashed_messages() %}
-        {% for msg in messages %}
-          <p class="error">{{ msg }}</p>
-        {% endfor %}
-      {% endwith %}
+            {% for msg in messages %}
+                <p class="error">{{ msg }}</p>
+            {% endfor %}
+        {% endwith %}
       </div>
 
   
