@@ -8,6 +8,28 @@ from flask import Flask, render_template, redirect, flash, request, send_from_di
 from werkzeug.utils import secure_filename
 from utils import *
 
+# ALLOWED_EXTENSIONS = ['PNG', 'jpg', 'jpeg', 'png', 'JPG', 'JPEG']
+# UPLOADS_FOLDER = 'uploads/images'
+
+
+# def file_valid(file):
+#   return '.' in file and \
+#     file.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS 
+
+# from flask import Blueprint
+
+# from .extensions import mongo 
+
+# main = Blueprint('main', __name__)
+
+# @main.route('/')
+# def index():
+#     user_collection = mongo.db.users
+#     user_collection.insert({'name' : 'Cristina'})
+#     user_collection.insert({'name' : 'Derek'})
+#     return '<h1>Added a User!</h1>'
+
+
 app = Flask(__name__)
 app.config['UPLOADS_FOLDER'] = UPLOADS_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
@@ -44,18 +66,19 @@ def upload():
         file.save(os.path.join(app.config['UPLOADS_FOLDER'], filename))
         flash('Image uploaded successfully 1')
 
-        # image_path = "uploads/images/"+file.filename
-        # print(image_path)
-        # secure_filename(image_path)
-        # print(image_path)
+        image_path = "uploads/images/"+filename
+        print(image_path)
+        
+
         base_width = 360
-        image = Image.open('uploads/images/2-1_TT.PNG')
+        image = Image.open(image_path)
         
         width_percent = (base_width / float(image.size[0]))
         hsize = int((float(image.size[1]) * float(width_percent)))
         image = image.resize((base_width, hsize), PIL.Image.ANTIALIAS)
         print(image)
-        image.save('uploads/images/resized_compressed_image.PNG', optimize=True)
+        new_filename_path = image_path+"_compressed.PNG"
+        image.save(new_filename_path , optimize=True)
 
         
         # file.save(os.path.join(app.config['UPLOADS_FOLDER'], 'resized_compressed_image.jpg'))

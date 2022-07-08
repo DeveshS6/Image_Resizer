@@ -3,6 +3,7 @@ from PIL import Image
 from tkinter.filedialog import *
 
 file_path = askopenfilename()
+# print(file_path)
 image = PIL.Image.open(file_path)
 base_width = 360
 
