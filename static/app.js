@@ -38,6 +38,7 @@ function fileValidation() {
 
 
 function process() {
+    flash("OK")
     const file = document.querySelector("#file").files[0];
   
   
@@ -61,11 +62,36 @@ function process() {
         const ctx = canvas.getContext("2d");
   
         ctx.drawImage(e.target, 0, 0, canvas.width, canvas.height);
-        
-        const srcEncoded = ctx.canvas.toDataURL(e.target, "image/jpeg");
   
+        const srcEncoded = ctx.canvas.toDataURL(e.target, "image/jpeg");
+        flash("OK")
         // you can send srcEncoded to the server
         document.querySelector("#output").src = srcEncoded;
+        upload(srcEncoded)
       };
     };
   }
+
+  function upload(file) {
+    // Create a form using FormData. This holds key value pairs.
+    var formdata = new FormData();
+
+    // Add a key value pair ("snap", file) to the FormData object. file is the original file passed sent to the upload function.
+    formdata.append("snap", file);
+
+    // create AJAX connection
+    // The fetch() method is used to request from the server and load the information in the webpages.
+    // The request can be of any APIs that returns the data of the format JSON or XML. This method returns a promise.
+
+    // The fetch() method returns a Promise and has the syntax of if true, do these sequential functions, else in the case of an error do Y.
+    fetch("/upload", {
+        method: 'POST',
+        body: formdata,
+    }).then(function(response) {
+        return response.blob();
+    }).then(function(blob) {
+        image.src = URL.createObjectURL(blob);
+    }).catch(function(err) {
+        console.log('Fetch problem: ' + err.message);
+    });
+}
