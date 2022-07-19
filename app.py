@@ -8,26 +8,7 @@ from flask import Flask, render_template, redirect, flash, request, send_from_di
 from werkzeug.utils import secure_filename
 from utils import *
 
-# ALLOWED_EXTENSIONS = ['PNG', 'jpg', 'jpeg', 'png', 'JPG', 'JPEG']
-# UPLOADS_FOLDER = 'uploads/images'
 
-
-# def file_valid(file):
-#   return '.' in file and \
-#     file.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS 
-
-# from flask import Blueprint
-
-# from .extensions import mongo 
-
-# main = Blueprint('main', __name__)
-
-# @main.route('/')
-# def index():
-#     user_collection = mongo.db.users
-#     user_collection.insert({'name' : 'Cristina'})
-#     user_collection.insert({'name' : 'Derek'})
-#     return '<h1>Added a User!</h1>'
 
 
 app = Flask(__name__)
