@@ -4,37 +4,76 @@
     font-family: Century 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-
-.logo img{
-    float: left;
-    width: 150px;
-    height: auto;
+header{
+  background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(../static/bg.jpg);
+  height: 100vh;
+  /* background-size: cover; */
+  background-position: center;
 }
 
 
 .logo img{
-    float: left;
-    width: 150px;
+    float: middle;
+    width: 400px;
     height: auto;
-        }
+}
+
+.title img{
+  width: 300px;
+  height: auto;
+}
+.container{
+  max-width: 1200px;
+  margin: auto;
+}
 
     h1 {
-        color:  rgb(255, 255, 255);
+        color:  darkblue;
+        font-size: 70px;
     }
-    .container {
-  width: 80%;
-  margin: 2rem auto;
+
+    h3 {
+      color:  white;
+      font-size: large;
+  }
+
+  p {
+    color: white;
+    font-size: medium;
+    line-height: 20px;
+  }
+
+  .up{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+
+.title{
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  transform: translate(-50%, -50%);
 }
 
-input {
+/* input {
   display: block;
   margin-bottom: 2rem;
   font-size: 18px;
   text-align: center;
-}
+} */
 
 input[type="submit"] {
-  background-color: rgb(253, 253, 253);
+  background-color: #04AA6D;
+  color: white;
+  padding: .8rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+input[type="file"] {
+  background-color: white;
   color: black;
   padding: .8rem;
   border-radius: 10px;
@@ -43,7 +82,7 @@ input[type="submit"] {
 
     body {
         text-align: center;
-        background-color: skyblue;
+        background-color: white;
         align-items: center;
         justify-content: center;
         
@@ -51,4 +90,5 @@ input[type="submit"] {
 
     .error {
   color: #ff0000;
+  size: 50px;
 }

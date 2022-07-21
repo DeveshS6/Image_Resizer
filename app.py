@@ -30,34 +30,26 @@ def upload():
     if not 'file' in request.files:
         flash('No file part in request')
         return "NO file"
-    flash("ok 1")
-   
     
-    print(file) 
-    flash("ok 2")
     if file.filename == '':
         flash('No file uploaded')
         return "No file uploaded"
 
     if file_valid(file.filename):
         
-        print(file.filename)
         filename = secure_filename(file.filename)
-        print(filename)
         file.save(os.path.join(app.config['UPLOADS_FOLDER'], filename))
-        flash('Image uploaded successfully 1')
 
         image_path = "uploads/images/"+filename
         print(image_path)
         
-
         base_width = 360
         image = Image.open(image_path)
         
         width_percent = (base_width / float(image.size[0]))
         hsize = int((float(image.size[1]) * float(width_percent)))
         image = image.resize((base_width, hsize), PIL.Image.ANTIALIAS)
-        print(image)
+    
         new_filename_path = image_path+"_compressed.PNG"
         image.save(new_filename_path , optimize=True)
 

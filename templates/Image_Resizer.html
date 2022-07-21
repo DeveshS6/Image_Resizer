@@ -15,28 +15,28 @@
 </head>
  
 <body>
-    <h1>
-        Image Resizer
-    </h1>
-    
-    <div class="logo">
-        <img src="../static/logo.png" >
-    </div>
-
-    <div class="'background">
+    <!-- <div class="'background">
       <img src="../static/bg.jpg" >
-    </div>
-    
-
+    </div> -->
+    <header>
     <div class="container">
-        <header>Upload an Image File</header>
-        <p>Upload only png, jpg, jpeg images only.</p>
-        <form action="/upload" method="post" enctype="multipart/form-data">
-          <input type="file" name="file"  id="file" accept=".jpg, .png, .jpeg" onchange="fileValidation()">
-          <!-- <input type="button" value="Resize" onclick="process()"> -->
-          <input type="submit" value="Upload" >
-        </form>
+
+      <div class="logo">
+        <img src="../static/logo.png" >
+    </div><br>
         
+        <h3>Upload an Image File</h3> <br>
+        <p>
+        (File types supported: .jpeg, .jpg, .png)</p>
+      </div>
+
+      <div class="up">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+          <input type="file" name="file"  id="file" accept=".jpg, .png, .jpeg" onchange="fileValidation()"><br>
+          <!-- <input type="button" value="Resize" onclick="process()"> -->
+          <input type="submit" value="Upload" ><br>
+        </form>
+
         {% with messages = get_flashed_messages() %}
             {% for msg in messages %}
                 <p class="error">{{ msg }}</p>
@@ -44,6 +44,11 @@
         {% endwith %}
       </div>
 
+      <div class="title">
+        <img src="../static/eshipz logo.png" >
+      </div>
+
+    </header>
 
       <div id="imagePreview"></div>
 
