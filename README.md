@@ -14,3 +14,6 @@ About the module:
 pip install pillow
 ```
 - Create 2 folders called uploads/images, the uploads folder contains the images folder where the resized and compressed images uploaded by the user will be saved.
+
+
+image.png

@@ -8,12 +8,13 @@ function fileValidation() {
     var allowedExtensions =
             /(\.jpg|\.jpeg|\.png)$/i;
      
-    if(fileInput.files[0].size > 2097152){
-        alert("File is too big it cannot be uploaded!");
-        fileInput.value = "";
-        };
+    // if(fileInput.files[0].size > 2097152){
+    //     alert("File is too big it cannot be uploaded!");
+    //     fileInput.value = "";
+    //     };
 
-    if (!allowedExtensions.exec(filePath) || fileInput.files[0].size > 2097152) {
+    if (!allowedExtensions.exec(filePath) //|| fileInput.files[0].size > 2097152
+    ) {
         alert('Invalid file type/size');
         fileInput.value = '';
         return false;

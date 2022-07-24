@@ -13,7 +13,7 @@ from utils import *
 
 app = Flask(__name__)
 app.config['UPLOADS_FOLDER'] = UPLOADS_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
+# app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
 app.config['SECRET_KEY'] = 'ImageResize'
 
 @app.route('/', methods=["GET", "POST"])
