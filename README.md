@@ -15,5 +15,9 @@ pip install pillow
 ```
 - Create 2 folders called uploads/images, the uploads folder contains the images folder where the resized and compressed images uploaded by the user will be saved.
 
+## Resized Image examples
+- These are some test image files that were resized and compressed
+- The images that were uploaded are compressed to almost 1% of the original size
+- Higher is the image file size greater is the compression observed
 
-image.png
+![resizeTEST](https://user-images.githubusercontent.com/107669612/180663245-995bc0d0-4b9b-4fd8-85a6-6dc5d0b4bcf5.png)
